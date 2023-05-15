@@ -1,0 +1,88 @@
+﻿@model IEnumerable<OdeToFood.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Author @Html.DisplayNameFor(model => model.Author.Name)
+        </th>
+        <th>
+            Cover Image
+        </th>
+        <th>
+            Book @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            Publisher @Html.DisplayNameFor(model => model.Publisher.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublishedDate)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author.Name)
+            </td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.ImagePath))
+                {
+                    <img src="@Url.Content(item.ImagePath)" alt="@item.Title" width="100" />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publisher.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishedDate)
+            </td>
+            <td>
+                <button class="btn btn-primary create-item">
+                    @Html.ActionLink("Create New", "Create")
+                </button>
+                |
+                <button class="btn btn-primary edit-item" data-id="@item.Id">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                </button>
+                |
+                <button class="btn btn-primary delete-item" data-id="@item.Id">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </button>
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Item</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("_EditModal")
+            </div>
+        </div>
+    </div>
+</div>

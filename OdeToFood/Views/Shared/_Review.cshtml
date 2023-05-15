@@ -1,0 +1,20 @@
+﻿@*@model OdeToFood.Models.RestaurantReview
+
+<div>
+    <h3>
+        @Model.Name
+    </h3>
+    <p>
+        @Model.City, @Model.Country
+    </p>
+    <h5>
+        Rating: @Model.Rating
+    </h5>
+    <hr />
+    <span>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = Model.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+    </span>
+    <hr />
+</div>*@

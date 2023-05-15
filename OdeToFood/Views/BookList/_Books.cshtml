@@ -1,0 +1,36 @@
+﻿@model IEnumerable<OdeToFood.Models.BookListViewModel>
+
+
+<div id="bookList">
+    @foreach (var item in Model)
+    {
+        <div>
+            <div class="card-img">
+                @if (!string.IsNullOrEmpty(item.ImagePath))
+                {
+                    <img src="@Url.Content(item.ImagePath)" alt="@item.Title" width="100" />
+                }
+            </div>
+            <h2>
+                @Html.DisplayFor(modelItem => item.Title)
+            </h2>
+            <h4>
+                @Html.DisplayFor(modelItem => item.AuthorName)
+            </h4>
+            <p>
+                @Html.DisplayFor(modelItem => item.Description)
+            </p>
+            <p>
+                @Html.DisplayFor(modelItem => item.PublishedDate)
+            </p>
+            <p>
+                @Html.DisplayFor(modelItem => item.PublisherName)
+            </p>
+            <h5>
+                @Html.DisplayFor(modelItem => item.CountOfBookReviews)
+            </h5>
+            <br />
+            <hr />
+        </div>
+    }
+</div>

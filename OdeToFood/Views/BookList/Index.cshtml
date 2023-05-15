@@ -1,0 +1,12 @@
+﻿@model IEnumerable<OdeToFood.Models.BookListViewModel>
+
+@{
+    ViewBag.Title = "Book Lists";
+}
+
+<h3>Lists of Books available in OdeToFood currently</h3>
+<hr />
+<hr />
+
+@Html.Partial("_Books", Model)
+
